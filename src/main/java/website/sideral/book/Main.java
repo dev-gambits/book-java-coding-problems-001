@@ -1,5 +1,9 @@
 package website.sideral.book;
 
+import website.sideral.exercise.service.StringHashMapService;
+
+import static website.sideral.exercise.util.StringsUtil.*;
+
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -12,18 +16,18 @@ public class Main {
     // 💕 -> Unicode: \uD83D\uDC95, Code Point: 128149
     // 🎼 -> \uD83C\uDFBC, Code Point: 127932
     // 😍 ->\uD83D\uDE0D, Code Point: 128525
-    private static final String TEXT_CP = TEXT + "😍 I love 💕 you Ӝ so much 💕 😍 🎼🎼🎼!";
+    private static final String TEXT_CP = TEXT + "😍 I love 💕 you Ӝ so much 💕 😍 🎼🎼🎼!" + "\uD83D\uDE0D" + "\uD83D\uDE0D" + "\uD83D\uDE0D" + "\uD83D\uDE0D";
 
     public static void main(String[] args) {
 
-        System.out.println("Input text: \n" + TEXT + "\n");
+        System.out.println("Input text: \n" + TEXT_UTIL + "\n");
 
         System.out.println("\n\nASCII or 16 bits Unicode characters (less than 65,535 (0xFFFF)) examples:\n");
 
         System.out.println("HashMap based solution:");
         long startTimeV1 = System.nanoTime();
 
-        Map<Character, Integer> duplicatesV1 = Strings.countDuplicateCharactersV1(TEXT);
+        Map<Character, Integer> duplicatesV1 = StringHashMapService.countDuplicateCharactersV1(TEXT_CP_UTIL);
 
         displayExecutionTime(System.nanoTime()-startTimeV1);
         System.out.println(Arrays.toString(duplicatesV1.entrySet().toArray()));
